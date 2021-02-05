@@ -9,10 +9,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     GameBoard board = default;
+    [SerializeField]
+    GameObject objectToSpawn;
+
+    [SerializeField]
+    Camera currentCamera;
 
     void Awake()
     {
         board.Initialize(boardSize);
+
     }
     void OnValidate()
     {
@@ -28,12 +34,22 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Fire1"))
+        {
+            spawnEntity(objectToSpawn);
+        }
+    }
+    public void spawnEntity(GameObject a)
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Debug.Log("position du sol" + board.transform.position.y);
+        mousePos.z = currentCamera.transform.position.y - 0.5f;       // we want 2m away from the camera position
+        Vector3 objectPos = currentCamera.ScreenToWorldPoint(mousePos);
+        Instantiate(a, objectPos, Quaternion.identity);
     }
 }
