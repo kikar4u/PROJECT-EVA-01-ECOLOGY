@@ -14,5 +14,6 @@ public class EntityCollider : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         // change speed of ennemy
+        entity.initSpeed();
     }
 }

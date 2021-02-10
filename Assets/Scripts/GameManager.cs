@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     GameBoard board = default;
-    [SerializeField]
-    GameObject objectToSpawn;
+   
+    public GameObject objectToSpawn;
 
     [SerializeField]
     Camera currentCamera;
@@ -43,13 +43,18 @@ public class GameManager : MonoBehaviour
         {
             spawnEntity(objectToSpawn);
         }
+        Debug.Log(Input.mousePosition);
     }
     public void spawnEntity(GameObject a)
     {
+        
         Vector3 mousePos = Input.mousePosition;
         Debug.Log("position du sol" + board.transform.position.y);
         mousePos.z = currentCamera.transform.position.y - 0.5f;       // we want 2m away from the camera position
         Vector3 objectPos = currentCamera.ScreenToWorldPoint(mousePos);
-        Instantiate(a, objectPos, Quaternion.identity);
+        if(mousePos.y > 232){
+            Instantiate(a, objectPos, Quaternion.identity);
+        }
+
     }
 }

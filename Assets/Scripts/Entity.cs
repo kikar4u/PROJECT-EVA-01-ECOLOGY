@@ -13,4 +13,9 @@ public class Entity : MonoBehaviour
         // change speed of ennemy
         Debug.Log("l'ennemi n'a plus qu'une vitesse de " + speedMalus);
     }
+    public void initSpeed()
+    {
+        Debug.Log("HELLO WORLD JE RETOURNE A MA VITESSE DE BASE");
+        
+    }
 }
