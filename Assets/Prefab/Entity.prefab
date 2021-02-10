@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6725603342125640553}
   - component: {fileID: 2845155802598810812}
   - component: {fileID: 8384740612903223804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8384291911995348427}
   - component: {fileID: 1414306699284650226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Entity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
