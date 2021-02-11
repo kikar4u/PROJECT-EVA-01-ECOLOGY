@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Camera currentCamera;
     RaycastHit hit;
+    public float timeLeft = 3.0f;
+    //public Text startText; //used for showing countdown from 3,2,1 
     void Awake()
     {
         board.Initialize(boardSize);
@@ -35,15 +37,25 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        timeLeft -= Time.deltaTime % 60;
+        //Debug.Log(timeLeft);
+        //startText.text = (timeLeft).ToString("0");
+        if (timeLeft <= 0)
+        {
+            Debug.Log("prout");
+            //Do something useful or Load a new game scene
+        }
         if (Input.GetButtonDown("Fire1"))
         {
             spawnEntity(objectToSpawn);
         }
+
         //Debug.Log(Input.mousePosition);
 
     }
