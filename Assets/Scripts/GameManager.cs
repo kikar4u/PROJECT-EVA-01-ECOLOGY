@@ -43,14 +43,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeLeft -= Time.deltaTime % 60;
+        //timeLeft -= Time.deltaTime % 60;
         //Debug.Log(timeLeft);
         //startText.text = (timeLeft).ToString("0");
-        if (timeLeft <= 0)
-        {
-            Debug.Log("prout");
-            //Do something useful or Load a new game scene
-        }
+
         if (Input.GetButtonDown("Fire1"))
         {
             spawnEntity(objectToSpawn);

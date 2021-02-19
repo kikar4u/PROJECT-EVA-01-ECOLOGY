@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimerManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
     float timeInSeconds;
+    [SerializeField]
+    Text timer;
     void Start()
     {
         
@@ -15,11 +18,22 @@ public class TimerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //launchTimer();
+        launchTimer();
     }
     public void launchTimer()
     {
         timeInSeconds -= Time.deltaTime % 60;
-        //Debug.Log(timeInSeconds);
+        float timeLeft = Mathf.RoundToInt(timeInSeconds);
+        
+        if (timeInSeconds <= 0)
+        {
+            Debug.Log("prout");
+            //Do finish timer
+        }
+        else
+        {
+            timer.text = timeLeft + "";
+            Debug.Log(timeInSeconds);
+        }
     }
 }
