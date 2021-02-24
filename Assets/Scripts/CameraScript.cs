@@ -72,11 +72,11 @@ public class CameraScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) || Input.mousePosition.y >= Screen.height - ScreenEdgeBorderThickness)
         {
-            panMovement += Vector3.forward * panSpeed * Time.deltaTime;
+            panMovement += Vector3.up * panSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.S) || Input.mousePosition.y <= ScreenEdgeBorderThickness)
         {
-            panMovement -= Vector3.forward * panSpeed * Time.deltaTime;
+            panMovement -= Vector3.up * panSpeed * Time.deltaTime;
         }
         // a ajouter si on veut pouvoir se déplacer sur l'axe horizontal
 /*        if (Input.GetKey(KeyCode.A) || Input.mousePosition.x <= ScreenEdgeBorderThickness)

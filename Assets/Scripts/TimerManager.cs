@@ -10,9 +10,10 @@ public class TimerManager : MonoBehaviour
     float timeInSeconds;
     [SerializeField]
     Text timer;
+
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -27,13 +28,13 @@ public class TimerManager : MonoBehaviour
         
         if (timeInSeconds <= 0)
         {
-            Debug.Log("prout");
+           // Debug.Log("prout");
             //Do finish timer
         }
         else
         {
             timer.text = timeLeft + "";
-            Debug.Log(timeInSeconds);
+            //Debug.Log(timeInSeconds);
         }
     }
 }

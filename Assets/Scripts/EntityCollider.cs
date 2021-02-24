@@ -6,14 +6,15 @@ public class EntityCollider : MonoBehaviour
 {
     [SerializeField]
     Entity entity;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        //Debug.Log("change la vitesse du monstre");
         // change speed of ennemy
-        entity.changeSpeed();
+        entity.changeSpeed(other.gameObject);
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         // change speed of ennemy
-        entity.initSpeed();
+        entity.initSpeed(other.gameObject);
     }
 }

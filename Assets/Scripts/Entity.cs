@@ -5,17 +5,26 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     [SerializeField]
-    int speedMalus;
+    float speedMalus;
+    [SerializeField]
+    int pollution;
     // Start is called before the first frame update
-    public void changeSpeed()
+    private void Start()
+    {
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<PollutionManager>().pollutionLevel += pollution;
+    }
+    public void changeSpeed(GameObject other)
     {
 
+        other.gameObject.GetComponent<MonsterController>().speed -= speedMalus;
         // change speed of ennemy
-        Debug.Log("l'ennemi n'a plus qu'une vitesse de " + speedMalus);
+        //Debug.Log("l'ennemi n'a plus qu'une vitesse de " + speedMalus);
     }
-    public void initSpeed()
+
+    public void initSpeed(GameObject other)
     {
-        Debug.Log("HELLO WORLD JE RETOURNE A MA VITESSE DE BASE");
+        other.gameObject.GetComponent<MonsterController>().speed += speedMalus;
+        //Debug.Log("HELLO WORLD JE RETOURNE A MA VITESSE DE BASE");
         
     }
 }

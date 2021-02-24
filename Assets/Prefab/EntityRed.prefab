@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1414306699284650226, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
+      propertyPath: pollution
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8384291911623080092, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

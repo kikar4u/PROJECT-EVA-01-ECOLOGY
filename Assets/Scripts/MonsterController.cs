@@ -5,8 +5,8 @@ using UnityEngine;
 public class MonsterController : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]
-    float speed;
+    
+    public float speed;
     // might be useless
     int health;
     Transform characterTransform;
@@ -22,6 +22,6 @@ public class MonsterController : MonoBehaviour
     }
     void moving(float speed)
     {
-        characterTransform.Translate((Vector3.up * Time.deltaTime) * speed);
+        characterTransform.Translate((Vector3.left * Time.deltaTime) * speed);
     }
 }

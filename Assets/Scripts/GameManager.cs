@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     //public Text startText; //used for showing countdown from 3,2,1 
     void Awake()
     {
-        board.Initialize(boardSize);
+        //board.Initialize(boardSize);
         lMask = ~lMask;
     }
     void OnValidate()
@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
         {
             spawnEntity(objectToSpawn);
         }
+        //Ray ray = currentCamera.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z * 10));
+        
 
         //Debug.Log(Input.mousePosition);
 
@@ -59,33 +61,52 @@ public class GameManager : MonoBehaviour
     {
 
         Vector3 mousePos = Input.mousePosition;
-        Debug.Log(mousePos);
+        //Debug.Log(mousePos);
 
 
-        mousePos.z = currentCamera.transform.position.y - 0.5f;       // we want 2m away from the camera position
+        mousePos.z = -currentCamera.transform.position.z;       // we want 2m away from the camera position
         Vector3 objectPos = currentCamera.ScreenToWorldPoint(mousePos);
-        Ray ray = currentCamera.ScreenPointToRay(Input.mousePosition);
-
-
-        //Debug.DrawRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y,currentCamera.gameObject.transform.position.y), transform.TransformDirection(Vector3.down) *150, Color.yellow);
-        //Debug.Log(new Vector3(Input.mousePosition.x, Input.mousePosition.y, currentCamera.gameObject.transform.position.y));
-        if (Physics.Raycast(ray, out hit))
-        {
-            Transform objectHit = hit.transform;
-            Debug.Log("pan" + objectHit);
-            if(hit.transform.gameObject.name == "UIBounds")
+        Ray ray = currentCamera.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z * 10));
+        RaycastHit2D hit2 = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        bool isThereEntity = false;
+        bool isThereUI = false;
+        if(hit2.collider != null)
+        {   
+            if(hit2.transform.gameObject.tag == "Entity")
             {
-                
-                Debug.Log("touch UI");
+                Debug.Log(hit2.transform.gameObject.name);
+                isThereEntity = true;
             }
-            // Do something with the object that was hit by the raycast.
+            else
+            {
+                isThereEntity = false;
+            }
+
         }
-        else
+        if(Physics.Raycast(ray, out hit))
+        {
+                Transform objectHit = hit.transform;
+
+
+                if (hit.transform.gameObject.name == "UIBounds")
+                {
+                    // Debug.DrawRay(ray.origin, ray.direction * 10, Color.red);
+                    //Debug.Log("touch UI / entity");
+                    isThereUI = true;
+                }
+                else
+                {
+                    isThereUI = false;
+                }
+                // Do something with the object that was hit by the raycast.
+        }
+        if (isThereEntity == false && isThereUI == false)
         {
 
-                Instantiate(a, objectPos, Quaternion.identity);
-            
+            //Debug.Log("devrait spawn");
+            Instantiate(a, objectPos, Quaternion.identity);
         }
+
 
 
 
