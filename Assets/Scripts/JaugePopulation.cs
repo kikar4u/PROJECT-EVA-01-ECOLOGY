@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class JaugePopulation : MonoBehaviour
 {
+
     [SerializeField]
-    public int nbrPopulation = 100;
+    public int nbrPopulation = 5;
     public bool isInTown = false;
     float timeInSeconds;
     private IEnumerator coroutine;

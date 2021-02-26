@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,10 +19,18 @@ public class GameManager : MonoBehaviour
     RaycastHit hit;
     public float timeLeft = 3.0f;
     //public Text startText; //used for showing countdown from 3,2,1 
+    GameObject ville;
+    public bool isStarted = false;
+    [Header("Timer Attributes")]
+    [SerializeField]
+    public float timeInSeconds;
+    public Text timer;
     void Awake()
     {
+
         //board.Initialize(boardSize);
         lMask = ~lMask;
+        ville = GameObject.Find("Ville");
     }
     void OnValidate()
     {
@@ -46,16 +55,33 @@ public class GameManager : MonoBehaviour
         //timeLeft -= Time.deltaTime % 60;
         //Debug.Log(timeLeft);
         //startText.text = (timeLeft).ToString("0");
-
-        if (Input.GetButtonDown("Fire1"))
+        if (isStarted)
         {
-            spawnEntity(objectToSpawn);
+            launchTimer();
+            if (ville.GetComponent<JaugePopulation>().nbrPopulation == 0)
+            {
+                Time.timeScale = 0;
+                Debug.Log("GAME OVER");
+            }
         }
+        else
+        {
+            if (Input.GetButtonDown("Fire1") && !isStarted)
+            {
+                spawnEntity(objectToSpawn);
+            }
+        }
+
+
         //Ray ray = currentCamera.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z * 10));
         
 
         //Debug.Log(Input.mousePosition);
 
+    }
+    public void launchGame()
+    {
+        isStarted = true;
     }
     public void spawnEntity(GameObject a)
     {
@@ -91,7 +117,7 @@ public class GameManager : MonoBehaviour
                 if (hit.transform.gameObject.name == "UIBounds")
                 {
                     // Debug.DrawRay(ray.origin, ray.direction * 10, Color.red);
-                    //Debug.Log("touch UI / entity");
+                    Debug.Log("touch UI / entity");
                     isThereUI = true;
                 }
                 else
@@ -110,5 +136,22 @@ public class GameManager : MonoBehaviour
 
 
 
+    }
+    public void launchTimer()
+    {
+        timeInSeconds -= Time.deltaTime % 60;
+        float timeLeft = Mathf.RoundToInt(timeInSeconds);
+
+        if (timeInSeconds <= 0)
+        {
+            Debug.Log("Fin du niveau");
+            Time.timeScale = 0;
+            //Do finish timer
+        }
+        else
+        {
+            timer.text = timeLeft + "";
+            //Debug.Log(timeInSeconds);
+        }
     }
 }

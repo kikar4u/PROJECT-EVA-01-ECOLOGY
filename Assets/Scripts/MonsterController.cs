@@ -10,15 +10,21 @@ public class MonsterController : MonoBehaviour
     // might be useless
     int health;
     Transform characterTransform;
+    GameObject GM;
     void Start()
     {
         characterTransform = gameObject.GetComponent<Transform>();
+        GM = GameObject.FindGameObjectWithTag("GameController");
     }
 
     // Update is called once per frame
     void Update()
     {
-        moving(speed);
+        if (GM.GetComponent<GameManager>().isStarted)
+        {
+            moving(speed);
+        }
+
     }
     void moving(float speed)
     {

@@ -16,15 +16,21 @@ public class Entity : MonoBehaviour
     public void changeSpeed(GameObject other)
     {
 
-        other.gameObject.GetComponent<MonsterController>().speed -= speedMalus;
+        if(other.gameObject.GetComponent<MonsterController>() != null)
+        {
+            other.gameObject.GetComponent<MonsterController>().speed -= speedMalus;
+        }
+        
         // change speed of ennemy
         //Debug.Log("l'ennemi n'a plus qu'une vitesse de " + speedMalus);
     }
 
     public void initSpeed(GameObject other)
     {
-        other.gameObject.GetComponent<MonsterController>().speed += speedMalus;
-        //Debug.Log("HELLO WORLD JE RETOURNE A MA VITESSE DE BASE");
-        
+        if (other.gameObject.GetComponent<MonsterController>() != null)
+        {
+            other.gameObject.GetComponent<MonsterController>().speed += speedMalus;
+            //Debug.Log("HELLO WORLD JE RETOURNE A MA VITESSE DE BASE");
+        }
     }
 }
