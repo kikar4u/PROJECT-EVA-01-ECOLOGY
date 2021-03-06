@@ -6,6 +6,7 @@ public class Entity : MonoBehaviour
 {
     [SerializeField]
     float speedMalus;
+    float speedAtEnter;
     [SerializeField]
     int pollution;
     // Start is called before the first frame update
@@ -18,7 +19,14 @@ public class Entity : MonoBehaviour
 
         if(other.gameObject.GetComponent<MonsterController>() != null)
         {
-            other.gameObject.GetComponent<MonsterController>().speed -= speedMalus;
+            speedAtEnter = other.gameObject.GetComponent<MonsterController>().originalSpeed;
+            if(other.gameObject.GetComponent<MonsterController>().speed > 0.2f){
+                other.gameObject.GetComponent<MonsterController>().speed -= speedMalus;
+            }
+            else if(other.gameObject.GetComponent<MonsterController>().speed < 0.2f){
+                other.gameObject.GetComponent<MonsterController>().speed = 0.2f;
+            }
+            
         }
         
         // change speed of ennemy
@@ -29,7 +37,7 @@ public class Entity : MonoBehaviour
     {
         if (other.gameObject.GetComponent<MonsterController>() != null)
         {
-            other.gameObject.GetComponent<MonsterController>().speed += speedMalus;
+            other.gameObject.GetComponent<MonsterController>().speed = speedAtEnter;
             //Debug.Log("HELLO WORLD JE RETOURNE A MA VITESSE DE BASE");
         }
     }

@@ -7,12 +7,15 @@ public class MonsterController : MonoBehaviour
     // Start is called before the first frame update
     
     public float speed;
+    [HideInInspector]
+    public float originalSpeed;
     // might be useless
     int health;
     Transform characterTransform;
     GameObject GM;
     void Start()
     {
+        originalSpeed = speed;
         characterTransform = gameObject.GetComponent<Transform>();
         GM = GameObject.FindGameObjectWithTag("GameController");
     }
