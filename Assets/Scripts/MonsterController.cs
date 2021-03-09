@@ -9,6 +9,7 @@ public class MonsterController : MonoBehaviour
     public float speed;
     [HideInInspector]
     public float originalSpeed;
+    public Vector3 direction = Vector3.left;
     // might be useless
     int health;
     Transform characterTransform;
@@ -31,6 +32,8 @@ public class MonsterController : MonoBehaviour
     }
     void moving(float speed)
     {
-        characterTransform.Translate((Vector3.left * Time.deltaTime) * speed);
+        Debug.Log(direction);
+        Debug.Log(speed);
+        characterTransform.Translate((direction * Time.deltaTime) * speed);
     }
 }

@@ -9,6 +9,14 @@ public class Entity : MonoBehaviour
     float speedAtEnter;
     [SerializeField]
     int pollution;
+
+    /*    public enum directionToGoFor
+        {
+            none = 0,
+            up = 1,
+            down = 2
+
+        }*/
     // Start is called before the first frame update
     private void Start()
     {
@@ -40,5 +48,29 @@ public class Entity : MonoBehaviour
             other.gameObject.GetComponent<MonsterController>().speed = speedAtEnter;
             //Debug.Log("HELLO WORLD JE RETOURNE A MA VITESSE DE BASE");
         }
+    }
+    public void decalMob(GameObject other, string directionToGo)
+    {
+        if(directionToGo =="up")
+        {
+
+          //StartCoroutine(directionChange(other, Vector3.up));
+          other.gameObject.GetComponent<MonsterController>().direction = Vector3.up;
+
+        }
+        else if(directionToGo == "down")
+        {
+          other.gameObject.GetComponent<MonsterController>().direction = Vector3.down;
+        }
+        else
+        {
+          other.gameObject.GetComponent<MonsterController>().direction = Vector3.left;
+        }
+    }
+    IEnumerator directionChange(GameObject other, Vector3 direction)
+    {
+        other.gameObject.GetComponent<MonsterController>().direction = direction;
+        yield return new WaitForSeconds(2.0f);
+        //other.gameObject.GetComponent<MonsterController>().direction = Vector3.left;
     }
 }
