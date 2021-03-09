@@ -25,12 +25,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public float timeInSeconds;
     public Text timer;
+    private Text population;
     void Awake()
     {
 
         //board.Initialize(boardSize);
         lMask = ~lMask;
         ville = GameObject.Find("Ville");
+        population = GameObject.Find("Population").GetComponent<Text>();
     }
     void OnValidate()
     {
@@ -46,7 +48,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        population.text = "Population : " + ville.GetComponent<JaugePopulation>().nbrPopulation;
+        timer.text = timeInSeconds + "";
     }
 
     // Update is called once per frame
@@ -58,6 +61,7 @@ public class GameManager : MonoBehaviour
         if (isStarted)
         {
             launchTimer();
+            updatePopulation();
             if (ville.GetComponent<JaugePopulation>().nbrPopulation == 0)
             {
                 Time.timeScale = 0;
@@ -78,6 +82,10 @@ public class GameManager : MonoBehaviour
 
         //Debug.Log(Input.mousePosition);
 
+    }
+    public void updatePopulation()
+    {
+        population.text = "Population : " + ville.GetComponent<JaugePopulation>().nbrPopulation;
     }
     public void launchGame()
     {
