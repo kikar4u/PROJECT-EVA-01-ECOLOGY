@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public float timeInSeconds;
     public Text timer;
     private Text population;
+    GameObject overlayObject;
+    Vector3 rotationForObjecttoSpawn = new Vector3(0.0f,0.0f,0.0f);
     void Awake()
     {
 
@@ -50,11 +52,17 @@ public class GameManager : MonoBehaviour
     {
         population.text = "Population : " + ville.GetComponent<JaugePopulation>().nbrPopulation;
         timer.text = timeInSeconds + "";
+        overlayObject  = Instantiate(objectToSpawn, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        //overlayObject.GetComponentInChildren<PolygonCollider2D>().enabled = false;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 temp = Input.mousePosition;
+        overlayObject.transform.position = new Vector3(currentCamera.ScreenToWorldPoint(temp).x, currentCamera.ScreenToWorldPoint(temp).y, 0.0f);
+        overlayObject.GetComponentInChildren<SpriteRenderer>().sprite = objectToSpawn.GetComponentInChildren<SpriteRenderer>().sprite;
         //timeLeft -= Time.deltaTime % 60;
         //Debug.Log(timeLeft);
         //startText.text = (timeLeft).ToString("0");
@@ -73,6 +81,16 @@ public class GameManager : MonoBehaviour
             if (Input.GetButtonDown("Fire1") && !isStarted)
             {
                 spawnEntity(objectToSpawn);
+            }
+            if(Input.GetButtonDown("Fire2") && !isStarted)
+            {
+                if(rotationForObjecttoSpawn.z == 360)
+                {
+                    rotationForObjecttoSpawn.z = 0;
+                }
+                rotationForObjecttoSpawn.z += 90;
+                Debug.Log("rotation object to spawn" + rotationForObjecttoSpawn);
+                overlayObject.transform.Rotate(rotationForObjecttoSpawn, Space.World);
             }
         }
 
@@ -138,7 +156,9 @@ public class GameManager : MonoBehaviour
         {
 
             //Debug.Log("devrait spawn");
-            Instantiate(a, objectPos, Quaternion.identity);
+            GameObject spawnedObject = Instantiate(a, objectPos, Quaternion.identity);
+            spawnedObject.transform.Rotate(rotationForObjecttoSpawn, Space.World);
+
         }
 
 

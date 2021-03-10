@@ -1689,7 +1689,7 @@ MonoBehaviour:
         m_MethodName: objectCard
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8384291911995348439, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
+          m_ObjectArgument: {fileID: 5091863834133740864, guid: 576f89874bf53063e81d1642e9e2d8f1, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1979,8 +1979,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078712637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.01}
-  m_LocalScale: {x: 20, y: 20, z: 11}
+  m_LocalPosition: {x: 0.02, y: 1.326, z: 0.01}
+  m_LocalScale: {x: 19.665598, y: 11.120119, z: 11}
   m_Children: []
   m_Father: {fileID: 277876436}
   m_RootOrder: 0
@@ -2012,7 +2012,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e8846cd839ffb924fbad000d32335efa, type: 2}
+  - {fileID: 2100000, guid: 3775f2343b3316b4ca449a936c4bd5f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2068,7 +2068,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2735254, y: 0.83055305}
   m_AnchorMax: {x: 0.72347456, y: 0.98100007}
-  m_AnchoredPosition: {x: -812, y: 0}
+  m_AnchoredPosition: {x: -812.0001, y: 0}
   m_SizeDelta: {x: 1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2112532183
