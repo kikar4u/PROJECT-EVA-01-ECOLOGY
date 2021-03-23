@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     private Text population;
     GameObject overlayObject;
     Vector3 rotationForObjecttoSpawn = new Vector3(0.0f,0.0f,0.0f);
+    GameObject gameOver;
     void Awake()
     {
 
@@ -35,6 +37,9 @@ public class GameManager : MonoBehaviour
         lMask = ~lMask;
         ville = GameObject.Find("Ville");
         population = GameObject.Find("Population").GetComponent<Text>();
+        gameOver = GameObject.Find("GameOver");
+        gameOver.SetActive(false);
+        isStarted = false;
     }
     void OnValidate()
     {
@@ -74,6 +79,8 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 0;
                 Debug.Log("GAME OVER");
+                gameOver.SetActive(true);
+
             }
         }
         else
@@ -108,6 +115,10 @@ public class GameManager : MonoBehaviour
     public void launchGame()
     {
         isStarted = true;
+    }
+    public void restartGame()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
     public void spawnEntity(GameObject a)
     {

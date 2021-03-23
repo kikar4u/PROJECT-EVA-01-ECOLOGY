@@ -13,6 +13,7 @@ public class JaugePopulation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nbrPopulation = nbrPopulation;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
