@@ -15,6 +15,10 @@ public class SceneLoader : MonoBehaviour
     {
         
     }
+    public void nextLevel(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
     public void loadScene(string scene)
     {
         SceneManager.LoadScene(scene);

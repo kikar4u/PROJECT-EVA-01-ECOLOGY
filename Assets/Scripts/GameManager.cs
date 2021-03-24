@@ -25,11 +25,12 @@ public class GameManager : MonoBehaviour
     [Header("Timer Attributes")]
     [SerializeField]
     public float timeInSeconds;
-    Text timer;
+    GameObject timer;
     private Text population;
     GameObject overlayObject;
     Vector3 rotationForObjecttoSpawn = new Vector3(0.0f,0.0f,0.0f);
     GameObject gameOver;
+    GameObject winUI;
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -53,15 +54,18 @@ public class GameManager : MonoBehaviour
     {
         //Debug.Log("prpsepperppepepepeppepepepepepep");
         currentCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        timer = GameObject.Find("Timer").GetComponent<Text>();
+        timer = GameObject.Find("Timer");
         ville = GameObject.Find("Ville");
         population = GameObject.Find("Population").GetComponent<Text>();
         gameOver = GameObject.Find("GameOver");
+        winUI = GameObject.Find("WIN");
+        winUI.SetActive(false);
         gameOver.SetActive(false);
         isStarted = false;
         population.text = "Population : " + ville.GetComponent<JaugePopulation>().nbrPopulation;
         timeInSeconds = GameObject.Find("Timer").GetComponent<TimeInSeconds>().timeInSeconds;
-        timer.text = timeInSeconds + "";
+        timer.GetComponent<Slider>().maxValue = timeInSeconds;
+        timer.GetComponent<Slider>().value = timeInSeconds;
 
         Time.timeScale = 1;
         if (SceneManager.GetActiveScene().name != "MainMenu")
@@ -213,11 +217,12 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Fin du niveau");
             Time.timeScale = 0;
+            winUI.SetActive(true);
             //Do finish timer
         }
         else
         {
-            timer.text = timeLeft + "";
+            timer.GetComponent<Slider>().value = timeLeft;
             //Debug.Log(timeInSeconds);
         }
     }
