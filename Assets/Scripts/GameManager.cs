@@ -25,21 +25,17 @@ public class GameManager : MonoBehaviour
     [Header("Timer Attributes")]
     [SerializeField]
     public float timeInSeconds;
-    public Text timer;
+    Text timer;
     private Text population;
     GameObject overlayObject;
     Vector3 rotationForObjecttoSpawn = new Vector3(0.0f,0.0f,0.0f);
     GameObject gameOver;
     void Awake()
     {
-
+        DontDestroyOnLoad(this.gameObject);
         //board.Initialize(boardSize);
         lMask = ~lMask;
-        ville = GameObject.Find("Ville");
-        population = GameObject.Find("Population").GetComponent<Text>();
-        gameOver = GameObject.Find("GameOver");
-        gameOver.SetActive(false);
-        isStarted = false;
+
     }
     void OnValidate()
     {
@@ -52,22 +48,51 @@ public class GameManager : MonoBehaviour
             boardSize.y = 2;
         }
     }
+
+ public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        //Debug.Log("prpsepperppepepepeppepepepepepep");
+        currentCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        timer = GameObject.Find("Timer").GetComponent<Text>();
+        ville = GameObject.Find("Ville");
+        population = GameObject.Find("Population").GetComponent<Text>();
+        gameOver = GameObject.Find("GameOver");
+        gameOver.SetActive(false);
+        isStarted = false;
+        population.text = "Population : " + ville.GetComponent<JaugePopulation>().nbrPopulation;
+        timeInSeconds = GameObject.Find("Timer").GetComponent<TimeInSeconds>().timeInSeconds;
+        timer.text = timeInSeconds + "";
+
+        Time.timeScale = 1;
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            overlayObject = Instantiate(objectToSpawn, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        population.text = "Population : " + ville.GetComponent<JaugePopulation>().nbrPopulation;
-        timer.text = timeInSeconds + "";
-        overlayObject  = Instantiate(objectToSpawn, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+/*        population.text = "Population : " + ville.GetComponent<JaugePopulation>().nbrPopulation;
+        timer.text = timeInSeconds + "";*/
+
+
         //overlayObject.GetComponentInChildren<PolygonCollider2D>().enabled = false;
         
     }
-
     // Update is called once per frame
     void Update()
     {
         Vector3 temp = Input.mousePosition;
-        overlayObject.transform.position = new Vector3(currentCamera.ScreenToWorldPoint(temp).x, currentCamera.ScreenToWorldPoint(temp).y, 0.0f);
-        overlayObject.GetComponentInChildren<SpriteRenderer>().sprite = objectToSpawn.GetComponentInChildren<SpriteRenderer>().sprite;
+        //Debug.Log(SceneManager.GetActiveScene().name);
+        if (SceneManager.GetActiveScene().name != "MainMenu" && currentCamera != null)
+        {
+            //Debug.Log("overlayobjet" + overlayObject);
+            overlayObject.transform.position = new Vector3(currentCamera.ScreenToWorldPoint(temp).x, currentCamera.ScreenToWorldPoint(temp).y, 0.0f);
+            overlayObject.GetComponentInChildren<SpriteRenderer>().sprite = objectToSpawn.GetComponentInChildren<SpriteRenderer>().sprite;
+        }
         //timeLeft -= Time.deltaTime % 60;
         //Debug.Log(timeLeft);
         //startText.text = (timeLeft).ToString("0");
@@ -75,7 +100,7 @@ public class GameManager : MonoBehaviour
         {
             launchTimer();
             updatePopulation();
-            if (ville.GetComponent<JaugePopulation>().nbrPopulation == 0)
+            if (ville.GetComponent<JaugePopulation>().nbrPopulation <= 0)
             {
                 Time.timeScale = 0;
                 Debug.Log("GAME OVER");
@@ -85,7 +110,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Fire1") && !isStarted)
+            if (Input.GetButtonDown("Fire1") && !isStarted && SceneManager.GetActiveScene().name != "MainMenu")
             {
                 spawnEntity(objectToSpawn);
             }
@@ -96,7 +121,7 @@ public class GameManager : MonoBehaviour
                     rotationForObjecttoSpawn.z = 0;
                 }
                 rotationForObjecttoSpawn.z += 90;
-                Debug.Log("rotation object to spawn" + rotationForObjecttoSpawn);
+                //Debug.Log("rotation object to spawn" + rotationForObjecttoSpawn);
                 overlayObject.transform.Rotate(rotationForObjecttoSpawn, Space.World);
             }
         }
@@ -118,7 +143,7 @@ public class GameManager : MonoBehaviour
     }
     public void restartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        GameObject.FindGameObjectWithTag("LoadManager").GetComponent<SceneLoader>().reloadActiveScene();
     }
     public void spawnEntity(GameObject a)
     {
@@ -126,6 +151,8 @@ public class GameManager : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         //Debug.Log(mousePos);
 
+        if(currentCamera != null)
+        {
 
         mousePos.z = -currentCamera.transform.position.z;       // we want 2m away from the camera position
         Vector3 objectPos = currentCamera.ScreenToWorldPoint(mousePos);
@@ -137,7 +164,7 @@ public class GameManager : MonoBehaviour
         {   
             if(hit2.transform.gameObject.tag == "Entity")
             {
-                Debug.Log(hit2.transform.gameObject.name);
+                //Debug.Log(hit2.transform.gameObject.name);
                 isThereEntity = true;
             }
             else
@@ -172,6 +199,7 @@ public class GameManager : MonoBehaviour
 
         }
 
+        }
 
 
 
