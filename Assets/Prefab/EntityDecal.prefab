@@ -140,6 +140,10 @@ PrefabInstance:
       propertyPath: pollution
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5642568349494684308, guid: c5c89e7642bff3d9dbd36f6ae1988201, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.43
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2440065166643375019, guid: c5c89e7642bff3d9dbd36f6ae1988201, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c5c89e7642bff3d9dbd36f6ae1988201, type: 3}

@@ -60,6 +60,18 @@ PrefabInstance:
       propertyPath: pollution
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1438804369972988632, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8120707266991814014, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 8120707266991814014, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.096
+      objectReference: {fileID: 0}
     - target: {fileID: 8384291911995348427, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
