@@ -54,7 +54,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 67521473898548005, guid: c5c89e7642bff3d9dbd36f6ae1988201, type: 3}
       propertyPath: directionToGo
-      value: down
+      value: up
+      objectReference: {fileID: 0}
+    - target: {fileID: 2440065166643375019, guid: c5c89e7642bff3d9dbd36f6ae1988201, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2440065166643375019, guid: c5c89e7642bff3d9dbd36f6ae1988201, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.36
       objectReference: {fileID: 0}
     - target: {fileID: 3018322031383082375, guid: c5c89e7642bff3d9dbd36f6ae1988201, type: 3}
       propertyPath: m_LocalPosition.x
@@ -128,7 +136,12 @@ PrefabInstance:
       propertyPath: speedMalus
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5627641927565981886, guid: c5c89e7642bff3d9dbd36f6ae1988201, type: 3}
+      propertyPath: pollution
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2440065166643375019, guid: c5c89e7642bff3d9dbd36f6ae1988201, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c5c89e7642bff3d9dbd36f6ae1988201, type: 3}
 --- !u!1 &8171359471516141479 stripped
 GameObject:

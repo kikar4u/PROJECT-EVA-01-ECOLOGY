@@ -7,7 +7,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3018322032090831063}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -114,7 +114,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1414306699284650226, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
       propertyPath: pollution
-      value: 5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8384291911623080092, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
       propertyPath: m_Materials.Array.data[0]

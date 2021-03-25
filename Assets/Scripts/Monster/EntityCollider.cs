@@ -28,13 +28,17 @@ public class EntityCollider : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("is exit");
-        // change speed of ennemy
-        if (!decalMob)
+        if(other.gameObject.tag == "Monster")
         {
-            entity.initSpeed(other.gameObject);
+            Debug.Log("is exit");
+            // change speed of ennemy
+            if (!decalMob)
+            {
+                entity.initSpeed(other.gameObject);
+            }
+
+            entity.decalMob(other.gameObject, "left");
         }
 
-        entity.decalMob(other.gameObject, "left");
     }
 }

@@ -165,4 +165,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMalus: 0.3
-  pollution: 1
+  pollution: 0.5

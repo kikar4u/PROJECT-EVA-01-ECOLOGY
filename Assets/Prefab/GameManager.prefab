@@ -49,12 +49,11 @@ MonoBehaviour:
   lMask:
     serializedVersion: 2
     m_Bits: 256
-  objectToSpawn: {fileID: 8384291911995348439, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
+  objectToSpawn: {fileID: 5091863834133740864, guid: 576f89874bf53063e81d1642e9e2d8f1, type: 3}
   currentCamera: {fileID: 0}
   timeLeft: 3
   isStarted: 0
   timeInSeconds: 60
-  timer: {fileID: 0}
 --- !u!114 &5127874137632344727
 MonoBehaviour:
   m_ObjectHideFlags: 0
