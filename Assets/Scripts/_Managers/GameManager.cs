@@ -150,7 +150,8 @@ public class GameManager : MonoBehaviour
     public void restartGame()
     {
         GameObject.FindGameObjectWithTag("LoadManager").GetComponent<SceneLoader>().reloadActiveScene();
-        this.GetComponent<PollutionManager>().pollutionLevel -= 5; 
+        tmpPollutionLevel = 0;
+        this.GetComponent<PollutionManager>().pollutionLevel = this.GetComponent<PollutionManager>().pollutionLevel; 
     }
     public void spawnEntity(GameObject a)
     {

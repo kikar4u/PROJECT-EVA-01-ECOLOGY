@@ -134,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5627641927565981886, guid: c5c89e7642bff3d9dbd36f6ae1988201, type: 3}
       propertyPath: speedMalus
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5627641927565981886, guid: c5c89e7642bff3d9dbd36f6ae1988201, type: 3}
       propertyPath: pollution
