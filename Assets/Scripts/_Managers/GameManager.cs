@@ -98,7 +98,9 @@ public class GameManager : MonoBehaviour
             //Debug.Log("overlayobjet" + overlayObject);
             overlayObject.transform.position = new Vector3(currentCamera.ScreenToWorldPoint(temp).x, currentCamera.ScreenToWorldPoint(temp).y, 0.0f);
             overlayObject.GetComponentInChildren<SpriteRenderer>().sprite = objectToSpawn.GetComponentInChildren<SpriteRenderer>().sprite;
+            overlayObject.gameObject.GetComponent<AudioSource>().enabled = false;
         }
+        
         //timeLeft -= Time.deltaTime % 60;
         //Debug.Log(timeLeft);
         //startText.text = (timeLeft).ToString("0");
@@ -106,6 +108,8 @@ public class GameManager : MonoBehaviour
         {
             launchTimer();
             updatePopulation();
+            overlayObject.SetActive(false);
+            
             if (ville.GetComponent<JaugePopulation>().nbrPopulation <= 0)
             {
                 Time.timeScale = 0;
@@ -120,16 +124,21 @@ public class GameManager : MonoBehaviour
             {
                 spawnEntity(objectToSpawn);
             }
-            if(Input.GetButtonDown("Fire2") && !isStarted)
+            // ANNULE, Fonctionne mais rotation parfois inexacte entre l'UI et l'objet apparu => mauvais feedback
+/*            if(Input.GetButtonDown("Fire2") && !isStarted)
             {
-                if(rotationForObjecttoSpawn.z == 360)
+                if (rotationForObjecttoSpawn.z == 180)
                 {
                     rotationForObjecttoSpawn.z = 0;
                 }
-                rotationForObjecttoSpawn.z += 90;
+                else
+                {
+                    rotationForObjecttoSpawn.z += 90;
+                }
+                
                 //Debug.Log("rotation object to spawn" + rotationForObjecttoSpawn);
                 overlayObject.transform.Rotate(rotationForObjecttoSpawn, Space.World);
-            }
+            }*/
         }
 
 

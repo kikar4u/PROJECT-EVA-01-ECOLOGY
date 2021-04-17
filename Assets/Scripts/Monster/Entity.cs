@@ -22,6 +22,7 @@ public class Entity : MonoBehaviour
     {
        
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().tmpPollutionLevel += pollution;
+        gameObject.GetComponent<AudioSource>().Play();
     }
     public void changeSpeed(GameObject other)
     {

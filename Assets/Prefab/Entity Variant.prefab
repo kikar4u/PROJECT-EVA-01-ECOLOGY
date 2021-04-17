@@ -120,6 +120,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Entity Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8613579385276788363, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 329ff2d4ca6f7e446b2e15726ea8c853, type: 3}
+    - target: {fileID: 8613579385276788363, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
+      propertyPath: m_Pitch
+      value: 0.48
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afe1c7debfbc8c846a4c1d60c80e1b43, type: 3}
 --- !u!1 &5091863833641979916 stripped
