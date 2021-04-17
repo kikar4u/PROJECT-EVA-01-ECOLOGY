@@ -20,7 +20,8 @@ public class Entity : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<PollutionManager>().pollutionLevel += pollution;
+       
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().tmpPollutionLevel += pollution;
     }
     public void changeSpeed(GameObject other)
     {

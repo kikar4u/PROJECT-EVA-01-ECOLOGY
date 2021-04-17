@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     Vector3 rotationForObjecttoSpawn = new Vector3(0.0f,0.0f,0.0f);
     GameObject gameOver;
     GameObject winUI;
+    public float tmpPollutionLevel;
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -66,12 +67,13 @@ public class GameManager : MonoBehaviour
         timeInSeconds = GameObject.Find("Timer").GetComponent<TimeInSeconds>().timeInSeconds;
         timer.GetComponent<Slider>().maxValue = timeInSeconds;
         timer.GetComponent<Slider>().value = timeInSeconds;
-
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<PollutionManager>().pollutionLevel += tmpPollutionLevel;
         Time.timeScale = 1;
         if (SceneManager.GetActiveScene().name != "MainMenu")
         {
             overlayObject = Instantiate(objectToSpawn, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }
+        
     }
     // Start is called before the first frame update
     void Start()
