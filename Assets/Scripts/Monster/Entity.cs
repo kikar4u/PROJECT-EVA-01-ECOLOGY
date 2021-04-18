@@ -25,7 +25,7 @@ public class Entity : MonoBehaviour
             if(other.gameObject.GetComponent<MonsterController>().speed < 0.6f)
             {
 
-                other.gameObject.GetComponent<MonsterController>().speed = 0.6f;
+                other.gameObject.GetComponent<MonsterController>().speed += 0.6f;
 
             }
             else

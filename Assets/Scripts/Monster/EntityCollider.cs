@@ -21,7 +21,6 @@ public class EntityCollider : MonoBehaviour
         }
         else
         {
-            
             entity.changeSpeed(other.gameObject);
 
         }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -129,6 +129,11 @@ public class GameManager : MonoBehaviour
                 overlayObject.transform.Rotate(rotationForObjecttoSpawn, Space.World);
             }*/
         }
+        if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            restartGame();
+        }
+
         //Ray ray = currentCamera.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z * 10));
         //Debug.Log(Input.mousePosition);
     }
