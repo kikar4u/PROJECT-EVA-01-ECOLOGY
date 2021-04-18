@@ -10,10 +10,4 @@ public class PollutionManager : MonoBehaviour
     {
         pollutionLevel = 0;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Debug.Log("level de pollution" + pollutionLevel);
-    }
 }

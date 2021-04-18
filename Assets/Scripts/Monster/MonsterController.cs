@@ -32,11 +32,10 @@ public class MonsterController : MonoBehaviour
     }
     void moving(float speed)
     {
-        Debug.Log(direction);
-        Debug.Log(speed);
-        if(GM.GetComponent<PollutionManager>().pollutionLevel > 0)
+
+        if(GM.GetComponent<PollutionManager>().pollutionLevel > 1)
         {
-            characterTransform.Translate((direction * Time.deltaTime) * (speed * (GM.GetComponent<PollutionManager>().pollutionLevel))/2);
+            characterTransform.Translate((direction * Time.deltaTime) * (speed * (GM.GetComponent<PollutionManager>().pollutionLevel)) / 1.5f);
         }
         else
         {

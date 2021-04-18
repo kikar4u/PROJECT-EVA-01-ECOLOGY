@@ -12,10 +12,10 @@ public class EntityCollider : MonoBehaviour
     string directionToGo = "up";
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log("change la vitesse du monstre");
-        // change speed of ennemy
+        //changement de direction du mob après avoir touché le bon type de bâtiment
         if (decalMob)
         {
+
             entity.decalMob(other.gameObject, directionToGo);
             
         }
@@ -23,6 +23,7 @@ public class EntityCollider : MonoBehaviour
         {
             
             entity.changeSpeed(other.gameObject);
+
         }
 
     }
@@ -30,7 +31,6 @@ public class EntityCollider : MonoBehaviour
     {
         if(other.gameObject.tag == "Monster")
         {
-            Debug.Log("is exit");
             // change speed of ennemy
             if (!decalMob)
             {

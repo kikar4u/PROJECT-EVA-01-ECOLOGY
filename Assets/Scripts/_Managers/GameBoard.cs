@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameBoard : MonoBehaviour
-{
+{   // NO LONGER USED
     [SerializeField]
     Transform ground = default;
 

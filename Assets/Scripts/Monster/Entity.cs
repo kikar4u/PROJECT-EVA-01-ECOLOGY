@@ -9,46 +9,46 @@ public class Entity : MonoBehaviour
     float speedAtEnter;
     [SerializeField]
     float pollution;
-
-    /*    public enum directionToGoFor
-        {
-            none = 0,
-            up = 1,
-            down = 2
-
-        }*/
     // Start is called before the first frame update
     private void Start()
     {
-       
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().tmpPollutionLevel += pollution;
         gameObject.GetComponent<AudioSource>().Play();
     }
     public void changeSpeed(GameObject other)
     {
-
+        // gestion du changement de vitesse suivant l'objet touché
         if(other.gameObject.GetComponent<MonsterController>() != null)
         {
+            // on stock la vitesse originale pour éviter de rajouter de la vitesse a une vitesse déjà modifiée
             speedAtEnter = other.gameObject.GetComponent<MonsterController>().originalSpeed;
-            if(other.gameObject.GetComponent<MonsterController>().speed > 0.2f){
+            if(other.gameObject.GetComponent<MonsterController>().speed > 0.6f)
+            {
+
                 other.gameObject.GetComponent<MonsterController>().speed -= speedMalus;
+
             }
-            else if(other.gameObject.GetComponent<MonsterController>().speed < 0.2f){
-                other.gameObject.GetComponent<MonsterController>().speed = 0.2f;
+            else if(other.gameObject.GetComponent<MonsterController>().speed < 0.6f)
+            {
+
+                other.gameObject.GetComponent<MonsterController>().speed = 0.6f;
+
+            }
+            else
+            {
+                other.gameObject.GetComponent<MonsterController>().speed = 0.6f;
             }
             
         }
-        
-        // change speed of ennemy
-        //Debug.Log("l'ennemi n'a plus qu'une vitesse de " + speedMalus);
     }
 
     public void initSpeed(GameObject other)
     {
         if (other.gameObject.GetComponent<MonsterController>() != null)
         {
+            // réinitialisation de la vitesse
             other.gameObject.GetComponent<MonsterController>().speed = speedAtEnter;
-            //Debug.Log("HELLO WORLD JE RETOURNE A MA VITESSE DE BASE");
+
         }
     }
     public void decalMob(GameObject other, string directionToGo)
@@ -73,6 +73,5 @@ public class Entity : MonoBehaviour
     {
         other.gameObject.GetComponent<MonsterController>().direction = direction;
         yield return new WaitForSeconds(2.0f);
-        //other.gameObject.GetComponent<MonsterController>().direction = Vector3.left;
     }
 }

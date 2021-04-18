@@ -19,7 +19,7 @@ public class JaugePopulation : MonoBehaviour
     {
         if (other.gameObject.tag == "Monster")
         {
-            Debug.Log("OH NON LESM ONSTRES SONT DANS LA VILLE ! ");
+
             isInTown = true;
             StartCoroutine(decrease());
 
@@ -27,20 +27,26 @@ public class JaugePopulation : MonoBehaviour
     }
     public void decreasePop()
     {
+
         nbrPopulation--;
         Debug.Log(nbrPopulation);
+
     }
     IEnumerator decrease()
     {
         while (true)
         {
+
             yield return new WaitForSeconds(1f);
             decreasePop();
+
         }
     }
     void OutputTime()
     {
+
         Debug.Log(Time.time);
+
     }
     // Update is called once per frame
     void Update()
