@@ -22,13 +22,7 @@ public class Entity : MonoBehaviour
         {
             // on stock la vitesse originale pour éviter de rajouter de la vitesse a une vitesse déjà modifiée
             speedAtEnter = other.gameObject.GetComponent<MonsterController>().originalSpeed;
-            if(other.gameObject.GetComponent<MonsterController>().speed > 0.6f)
-            {
-
-                other.gameObject.GetComponent<MonsterController>().speed -= speedMalus;
-
-            }
-            else if(other.gameObject.GetComponent<MonsterController>().speed < 0.6f)
+            if(other.gameObject.GetComponent<MonsterController>().speed < 0.6f)
             {
 
                 other.gameObject.GetComponent<MonsterController>().speed = 0.6f;
@@ -36,7 +30,9 @@ public class Entity : MonoBehaviour
             }
             else
             {
-                other.gameObject.GetComponent<MonsterController>().speed = 0.6f;
+                other.gameObject.GetComponent<MonsterController>().speed -= speedMalus;
+                
+
             }
             
         }
